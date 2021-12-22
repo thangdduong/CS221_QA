@@ -1,0 +1,5 @@
+transformers==4.14.1
+torch===1.6.0 
+torchvision===0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
+Flask==2.0.2
+Werkzeug==2.0.2

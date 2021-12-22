@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>CS221: Question Answering</title>
+    <link rel="stylesheet" href="./static/css/template.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="shortcut icon" href="#">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+ <body>
+    <!--
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type=text/javascript>
+            $(function() {
+              $('#submit-btn').on('click', function(e) {
+                e.preventDefault()
+                $.getJSON('/question_answering_test',
+                    function(data) {
+                  //do nothing
+                });
+                return false;
+              });
+            });
+    </script>
+    -->
+    <div class="main-container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
+            <div class="navbar-brand justify-content-left">
+                <a class="navbar-brand" href="https://www.uit.edu.vn/" target="_blank">
+                    <span class="navbar-brand mb-0 h1" style="color:black;">
+                        <img src="{{url_for('static', filename = 'images/logo-uit.png')}}" alt="" width="93" height="74" class="d-inline-block align-text">
+                            CS221: Xử lý ngôn ngữ tự nhiên
+                    </span>
+                </a>
+            </div>
+            <div class="navbar-collapse">
+                <span class="navbar-nav ml-auto h4" style="color:black">
+                    Question Answering demo
+                </span>
+            </div>
+        </nav>
+        <div class="container">
+            <form  action="{{ url_for('question_answering_test') }}" method="post">
+                <label for="user-question">Câu hỏi của bạn (Question):</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="user-question" name="user-question" placeholder="Nhập một câu hỏi bất kì..." aria-describedby="basic-addon2" value="{{ request.form['user-question'] }}" required>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" id="submit-btn" type="submit">Submit</button>
+                    </div>
+                </div>
+                <label for="context">Ngữ cảnh (Context):</label>
+                <div class="input-group mb-5">
+                    <textarea style="height:150px" class="form-control input-lg" type="text" id="context" name="context" placeholder="Nhập một đoạn văn bản bất kì..." name="context" required>{{user_context}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="answer">Câu trả lời (Answer):</label>
+                    <textarea style="height:40px" class="form-control" type="text" id="answer" name="answer" readonly>{{answer_found}}</textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+ </body>
+</html>
